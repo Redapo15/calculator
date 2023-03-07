@@ -1,24 +1,35 @@
 level2 = 0
 lvl2 = []
+ip = []
+summ = 0
 while True:
     str1 = str(input("give calculation to solve:  "))
     li = list(str1.split(" "))
     #print(li)
-    for i in range(1,len(li)):
-        
+    for i in range(len(li)):
+        print(i)
         if i%2!=0:
             if li[i] == "*":
-                level2 += 1
+                res = float(li[i-1])*float(li[i+1])
+                del(li[i-1])
+                del(li[i+1-1])
+                li[i-1]=res
             elif li[i] == "/":
-                level2 += 1
-    if level2 > 0:
-        print("test")
+                res = float(li[i-1])/float(li[i+1])
+                del(li[i-1])
+                del(li[i+1-1])
+                li[i-1]=res  
     else:
-        sum = int(li[0])
+        summ = float(li[0])
         for a in range(2,len(li)):
             if a%2==0:
                 if li[a-1]=="+":
-                    sum += int(li[a])
+                    summ += float(li[a])
                 elif li[a-1]=="-":
-                    sum -= int(li[a])
-    print(f"answer: {sum}")
+                    summ -= float(li[a])
+    print(f"answer: {summ}")
+    level2=0
+    lvl2=[]
+    ip=[]
+    summ=0
+    li=[]
